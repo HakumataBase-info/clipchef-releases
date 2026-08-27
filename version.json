@@ -1,0 +1,8 @@
+{
+  "version": "1.0.2",
+  "download_url": "https://github.com/HakumataBase-info/clipchef-releases/releases/download/v1.0.2/ClipChef-Setup.exe",
+  "sha256": "9132745E1FE91FC38F5628A97DA4C5AFDDFB53E8F9CB7A0158A7A63170EC2E04",
+  "size_bytes": 271412764,
+  "published_at": "2026-08-27T16:36:41+09:00",
+  "notes": "ローカル通信の保護を強化しました。アプリ内部で使うローカルAPIに起動ごとの認証を追加し、外部のWebページからアクセスできないようにしました。AI解析に渡す文字起こしの扱いも見直しています。機能や使い方に変更はありません。"
+}
