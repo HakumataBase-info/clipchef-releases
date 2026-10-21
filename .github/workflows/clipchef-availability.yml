@@ -1,0 +1,43 @@
+name: ClipChef availability
+on:
+  schedule:
+    - cron: '3-58/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      simulate_failure:
+        description: 'Notification drill only; does not stop the real service'
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: clipchef-availability
+  cancel-in-progress: false
+jobs:
+  check:
+    if: github.repository_visibility == 'public'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Check public API and update manifest
+        env:
+          DRILL: ${{ inputs.simulate_failure }}
+        run: |
+          node <<'JS'
+          const assert = require('node:assert/strict');
+          (async () => {
+            const health = await fetch('https://clipchef-api.hakumata.net/healthz', { signal: AbortSignal.timeout(15000) });
+            assert.equal(health.status, 200, 'Dedicated API health failed');
+            const response = await fetch('https://raw.githubusercontent.com/HakumataBase-info/clipchef-releases/main/version.json', { signal: AbortSignal.timeout(15000) });
+            assert.equal(response.status, 200, 'Update manifest unavailable');
+            const manifest = await response.json();
+            assert(/^\d+\.\d+\.\d+$/.test(manifest.version));
+            assert.equal(manifest.download_url, 'https://github.com/HakumataBase-info/clipchef-releases/releases/download/v' + manifest.version + '/ClipChef-Setup.exe');
+            assert(/^[A-Fa-f0-9]{64}$/.test(manifest.sha256));
+            const installer = await fetch(manifest.download_url, { method: 'HEAD', signal: AbortSignal.timeout(20000) });
+            assert.equal(installer.status, 200, 'Published installer unavailable');
+            await installer.body?.cancel();
+            console.log('PASS API, TLS, manifest and installer availability; no AI/Stripe/Redis request');
+            assert.notEqual(process.env.DRILL, 'true', 'TEST ONLY: notification delivery drill; real service was not stopped');
+          })().catch(e => { console.error(e.message); process.exitCode = 1; });
+          JS
