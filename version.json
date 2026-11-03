@@ -1,8 +1,8 @@
 {
-  "version": "1.0.6",
-  "download_url": "https://github.com/HakumataBase-info/clipchef-releases/releases/download/v1.0.6/ClipChef-Setup.exe",
-  "sha256": "9AA8F2210607447EA478AEF750E69C015545F96AD71701B5DA893F5088F20FD4",
-  "size_bytes": 275889797,
-  "published_at": "2026-10-22T00:29:53Z",
-  "notes": "字幕装飾・プリセットの色と数値の入力検証を強化しました。設定・動画・利用枠は保持されます。"
+  "version": "1.0.10",
+  "download_url": "https://github.com/HakumataBase-info/clipchef-releases/releases/download/v1.0.10/ClipChef-Setup.exe",
+  "sha256": "912A241900E7534FD6B6AB9D8CDFEF4C062B80057ED059F76F180797363551E6",
+  "size_bytes": 1298555142,
+  "published_at": "2026-11-03T11:43:27Z",
+  "notes": "Shortsの上下分割、タイトル・字幕の縦位置、拡大・横移動、背景・前景GIFに対応しました。採点とGPU文字起こしを改善し、利用規約2.3への再同意が必要です。"
 }
