@@ -1,8 +1,10 @@
 {
-  "version": "1.0.10",
-  "download_url": "https://github.com/HakumataBase-info/clipchef-releases/releases/download/v1.0.10/ClipChef-Setup.exe",
-  "sha256": "912A241900E7534FD6B6AB9D8CDFEF4C062B80057ED059F76F180797363551E6",
-  "size_bytes": 1298555142,
-  "published_at": "2026-11-03T11:43:27Z",
-  "notes": "Shortsの上下分割、タイトル・字幕の縦位置、拡大・横移動、背景・前景GIFに対応しました。採点とGPU文字起こしを改善し、利用規約2.3への再同意が必要です。"
+  "update_protocol": 1,
+  "version": "1.0.13",
+  "download_url": "https://github.com/HakumataBase-info/clipchef-releases/releases/download/v1.0.13/ClipChef-Setup.exe",
+  "sha256": "D4DFF7C8EBE82C5127BB819826F2680F5767ADB4E4F869ECFF0B91893758EA98",
+  "size_bytes": 1298557769,
+  "update_signature": "DRtQbkhRXjTQpDjzScv1A1wXeO2NkD8fyG/NLs5GGe8sESNUnhmWgF7CxxAshDJZ1fSEdKgcPcwymJC/w/bKCA==",
+  "published_at": "2026-11-10T14:19:45Z",
+  "notes": "Windows版の自動更新に対応しました。1.0.12以前からは今回だけ手動で更新してください。AI採点と再生成の安定性を改善しました。"
 }
